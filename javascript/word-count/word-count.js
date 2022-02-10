@@ -19,6 +19,7 @@ export const countWords = (phrase) => {
       }
     }
   }
+  console.log(wordsDict);
 
   return wordsDict;
 };
