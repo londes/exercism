@@ -10,28 +10,44 @@ export class BankAccount {
   }
 
   open() {
-    let bankAccount = new BankAccount();
-    return bankAccount;
+    if (!this.balance){
+      this.balance = 0;
+      return this;
+    }
+    else {
+      if (this.isAccountOpen == false)
+        this.isAccountOpen=true;
+      else
+        throw new ValueError();
+    }
   }
 
   close() {
-    this.isAccountOpen = false;
+    if (this.isAccountOpen === true) {
+      this.balance=0;
+      this.isAccountOpen = false;
+    }
+    else
+      throw new ValueError();
   }
 
   deposit(value) {
-    if (this.isAccountOpen = true)
+    if (this.isAccountOpen == true && value >= 0)
       this.balance += value;
     else
       throw new ValueError();
   }
 
   withdraw(value) {
-    this.balance -= value;
+    if (this.isAccountOpen == true && value <= this.balance && value >= 0)
+      this.balance -= value;
+    else
+      throw new ValueError();
   }
 
   get _balance() {
-    if (this.isAccountOpen = true)
-      return this.balannce;
+    if (this.isAccountOpen == true)
+      return this.balance;
     else
       throw new ValueError();
   }
@@ -39,6 +55,7 @@ export class BankAccount {
 
 export class ValueError extends Error {
   constructor() {
+    super();
     value: Error
   }
 }
