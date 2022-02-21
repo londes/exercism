@@ -7,12 +7,12 @@ describe('Allergies', () => {
       expect(allergies.allergicTo('eggs')).toEqual(false);
     });
 
-    xtest('allergic only to eggs', () => {
+    test('allergic only to eggs', () => {
       const allergies = new Allergies(1);
       expect(allergies.allergicTo('eggs')).toEqual(true);
     });
 
-    xtest('allergic to eggs and something else', () => {
+    test('allergic to eggs and something else', () => {
       const allergies = new Allergies(3);
       expect(allergies.allergicTo('eggs')).toEqual(true);
     });

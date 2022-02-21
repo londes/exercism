@@ -30,14 +30,45 @@ export class Allergies {
     }
 
     this.allergenList = [];
+
+    this.updateAllergies();
+  }
+
+  updateAllergies() {
+    if (this.score >= this.allergens['cats']) {
+      console.log('starting score, cats: ' + this.score);
+      this.allergenTable['cats'] = true;
+      this.score -= this.allergens['cats'];
+      console.log('ending score, cats: ' + this.score);
+    } 
+
+    else if (this.score >= this.allergens['pollen']) {
+      console.log('starting score, pollen: ' + this.score);
+      this.allergenTable['pollen'] = true;
+      this.score -= this.allergens['pollen'];
+      console.log('ending score, pollen: ' + this.score);
+    }
+    
+    else if (this.score >= this.allergens['peanuts']) {
+      console.log('starting score, peanuts: ' + this.score);
+      this.allergenTable['peanuts'] = true;
+      this.score -= this.allergens['peanuts'];
+      console.log('ending score, peanuts: ' + this.score);
+    }
+    
+    else if (this.score >= this.allergens['eggs']) {
+      console.log('starting score, eggs: ' + this.score);
+      this.allergenTable['eggs'] = true;
+      this.score -= this.allergens['eggs'];
+      console.log('ending score, eggs: ' + this.score);
+    }
   }
 
   list() {
     throw new Error('Remove this statement and implement this function');
   }
 
-  allergicTo() {
-
-    throw new Error('Remove this statement and implement this function');
+  allergicTo(allergen) {
+    return this.allergenTable[allergen];
   }
 }
