@@ -36,27 +36,70 @@ export class Allergies {
 
   updateAllergies() {
     if (this.score >= this.allergens['cats']) {
+      console.log('*** in cats ***');
       console.log('starting score, cats: ' + this.score);
       this.allergenTable['cats'] = true;
+      this.allergenList.push('cats');
       this.score -= this.allergens['cats'];
       console.log('ending score, cats: ' + this.score);
     } 
 
-    else if (this.score >= this.allergens['pollen']) {
+    if (this.score >= this.allergens['pollen']) {
+      console.log('** in pollen **');
       console.log('starting score, pollen: ' + this.score);
       this.allergenTable['pollen'] = true;
+      this.allergenList.push('pollen');
       this.score -= this.allergens['pollen'];
       console.log('ending score, pollen: ' + this.score);
     }
+
+    if (this.score >= this.allergens['chocolate']) {
+      console.log('** in chocolate **');
+      console.log('starting score, chocolate: ' + this.score);
+      this.allergenTable['chocolate'] = true;
+      this.allergenList.push('chocolate');
+      this.score -= this.allergens['chocolate'];
+      console.log('ending score, chocolate: ' + this.score);
+    }
+
+    if (this.score >= this.allergens['tomatoes']) {
+      console.log('** in tomatoes **');
+      console.log('starting score, tomatoes: ' + this.score);
+      this.allergenTable['tomatoes'] = true;
+      this.allergenList.push('tomatoes');
+      this.score -= this.allergens['tomatoes'];
+      console.log('ending score, tomatoes: ' + this.score);
+    }
+
+    if (this.score >= this.allergens['strawberries']) {
+      console.log('** in strawberries **');
+      console.log('starting score, strawberries: ' + this.score);
+      this.allergenTable['strawberries'] = true;
+      this.allergenList.push('strawberries');
+      this.score -= this.allergens['strawberries'];
+      console.log('ending score, strawberries: ' + this.score);
+    }
+
+    if (this.score >= this.allergens['shellfish']) {
+      console.log('** in shellfish **');
+      console.log('starting score, shellfish: ' + this.score);
+      this.allergenTable['shellfish'] = true;
+      this.allergenList.push('shellfish');
+      this.score -= this.allergens['shellfish'];
+      console.log('ending score, shellfish: ' + this.score);
+    }
     
-    else if (this.score >= this.allergens['peanuts']) {
+    if (this.score >= this.allergens['peanuts']) {
+      console.log('** in peanuts **');
       console.log('starting score, peanuts: ' + this.score);
       this.allergenTable['peanuts'] = true;
+      this.allergenList.push('peanuts');
       this.score -= this.allergens['peanuts'];
       console.log('ending score, peanuts: ' + this.score);
     }
     
-    else if (this.score >= this.allergens['eggs']) {
+    if (this.score >= this.allergens['eggs']) {
+      console.log('*** in eggs ***');
       console.log('starting score, eggs: ' + this.score);
       this.allergenTable['eggs'] = true;
       this.score -= this.allergens['eggs'];
