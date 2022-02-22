@@ -35,6 +35,7 @@ export class Allergies {
   }
 
   updateAllergies() {
+  if (this.score < this.allergens['cats']*2) {
     if (this.score >= this.allergens['cats']) {
       console.log('*** in cats ***');
       console.log('starting score, cats: ' + this.score);
@@ -110,10 +111,14 @@ export class Allergies {
       this.score -= this.allergens['eggs'];
       console.log('ending score, eggs: ' + this.score);
     }
+  } else {
+    this.score -= 256;
+    this.updateAllergies();
+  };
+    
   }
 
   list() {
-    console.log('in list() funciton: ' + this.allergenList.reverse());
     return this.allergenList.reverse();
   }
 
