@@ -94,6 +94,8 @@ export class Allergies {
       console.log('starting score, peanuts: ' + this.score);
       this.allergenTable['peanuts'] = true;
       this.allergenList.push('peanuts');
+      console.log('pushing value: peanuts');
+      console.log('array after peanuts: ' + this.allergenList);
       this.score -= this.allergens['peanuts'];
       console.log('ending score, peanuts: ' + this.score);
     }
@@ -102,13 +104,17 @@ export class Allergies {
       console.log('*** in eggs ***');
       console.log('starting score, eggs: ' + this.score);
       this.allergenTable['eggs'] = true;
+      this.allergenList.push('eggs');
+      console.log('pushing value: eggs');
+      console.log('array after eggs: ' + this.allergenList);
       this.score -= this.allergens['eggs'];
       console.log('ending score, eggs: ' + this.score);
     }
   }
 
   list() {
-    throw new Error('Remove this statement and implement this function');
+    console.log('in list() funciton: ' + this.allergenList.reverse());
+    return this.allergenList.reverse();
   }
 
   allergicTo(allergen) {
