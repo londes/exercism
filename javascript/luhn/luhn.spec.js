@@ -1,11 +1,11 @@
 import { valid } from './luhn';
 
 describe('Luhn', () => {
-  xtest('single digit strings can not be valid', () => {
+  test('single digit strings can not be valid', () => {
     expect(valid('1')).toEqual(false);
   });
 
-  xtest('a single zero is invalid', () => {
+  test('a single zero is invalid', () => {
     expect(valid('0')).toEqual(false);
   });
 
@@ -13,11 +13,11 @@ describe('Luhn', () => {
     expect(valid('059')).toEqual(true);
   });
 
-  xtest('a simple valid SIN that becomes invalid if reversed', () => {
+  test('a simple valid SIN that becomes invalid if reversed', () => {
     expect(valid('59')).toEqual(true);
   });
 
-  xtest('a valid Canadian SIN', () => {
+  test('a valid Canadian SIN', () => {
     expect(valid('055 444 285')).toEqual(true);
   });
 
