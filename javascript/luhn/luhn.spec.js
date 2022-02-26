@@ -1,7 +1,7 @@
 import { valid } from './luhn';
 
 describe('Luhn', () => {
-  test('single digit strings can not be valid', () => {
+  xtest('single digit strings can not be valid', () => {
     expect(valid('1')).toEqual(false);
   });
 
@@ -9,7 +9,7 @@ describe('Luhn', () => {
     expect(valid('0')).toEqual(false);
   });
 
-  xtest('a simple valid SIN that remains valid if reversed', () => {
+  test('a simple valid SIN that remains valid if reversed', () => {
     expect(valid('059')).toEqual(true);
   });
 
