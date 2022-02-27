@@ -20,13 +20,14 @@ export const valid = (numberString) => {
   let numberArray = numberString.split('');
   console.log('number array is: ' + numberArray);
 
-  // ad-hoc check for symbols, characters, and punctuation, which should fail our test
+  // ad-hoc check for symbols, characters, and punctuation which should fail our test
   // not sure this is an ideal way to do this, namely
-  // the idea of creating a new array of test values and
+  // the idea of creating a new array of test boolean values and
   // using includes() to check for failure.
   // It works but does not feel very performant
   let charChecks = [];
   let charCheck = true;
+  let trimmedNumberArray = [];
   numberArray.forEach(value => {
     let checkerValue = true;
     let valueInt = parseInt(value);
@@ -36,6 +37,7 @@ export const valid = (numberString) => {
     } else {
       console.log('char check pass, and the char is: ' + value);
       charChecks.push(true);
+      trimmedNumberArray.push(valueInt);
     }
   })
 
@@ -50,13 +52,12 @@ export const valid = (numberString) => {
   // ok, back to converting to ints and pushing to array
   // note to self: this operation could be performed in the above forEach.
   // simply have to put the push inside the valudation check.
-  let trimmedNumberArray = [];
-  numberArray.forEach(value => {
-    value = parseInt(value);
-    if (!isNaN(value)) {
-      trimmedNumberArray.push(value);
-    }
-  });
+  // numberArray.forEach(value => {
+  //   value = parseInt(value);
+  //   if (!isNaN(value)) {
+  //     trimmedNumberArray.push(value);
+  //   }
+  // });
   console.log('trimmed number array is: ' + trimmedNumberArray);
 
   //perform check
