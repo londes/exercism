@@ -25,6 +25,8 @@ export const valid = (numberString) => {
   // the idea of creating a new array of test boolean values and
   // using includes() to check for failure.
   // It works but does not feel very performant
+  // we also push to our trimmedArray if the value in the
+  // number array passes the check.
   let charChecks = [];
   let charCheck = true;
   let trimmedNumberArray = [];
@@ -49,15 +51,6 @@ export const valid = (numberString) => {
     console.log('**passed the char check**');
   }
 
-  // ok, back to converting to ints and pushing to array
-  // note to self: this operation could be performed in the above forEach.
-  // simply have to put the push inside the valudation check.
-  // numberArray.forEach(value => {
-  //   value = parseInt(value);
-  //   if (!isNaN(value)) {
-  //     trimmedNumberArray.push(value);
-  //   }
-  // });
   console.log('trimmed number array is: ' + trimmedNumberArray);
 
   //perform check
