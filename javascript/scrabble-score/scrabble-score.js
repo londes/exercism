@@ -12,7 +12,7 @@ export const score = (word) => {
   } else {
     console.log('the word input is: ' + word);
 
-    // dictionary of letters and score value
+    // dictionary of letters and their score value
     let letters = {
       a : 1,
       e : 1,
@@ -46,7 +46,7 @@ export const score = (word) => {
     let wordLetters = word.toLowerCase().split('');
     console.log('letters array: ' + wordLetters);
   
-    // creates a new array using convertToScores()
+    // creates a new array of scores using convertToScores()
     let scores = convertToScores(wordLetters);
     console.log('letters score array: ' + scores);
     
