@@ -8,7 +8,7 @@ describe('Exercise - Perfect Numbers', () => {
       );
     });
 
-    xtest('Negative integer is rejected (not a natural number)', () => {
+    test('Negative integer is rejected (not a natural number)', () => {
       expect(() => classify(-1)).toThrow(
         new Error('Classification is only possible for natural numbers.')
       );
@@ -16,15 +16,15 @@ describe('Exercise - Perfect Numbers', () => {
   });
 
   describe('Perfect Numbers', () => {
-    xtest('Smallest perfect number is classified correctly', () => {
+    test('Smallest perfect number is classified correctly', () => {
       expect(classify(6)).toEqual('perfect');
     });
 
-    xtest('Medium perfect number is classified correctly', () => {
+    test('Medium perfect number is classified correctly', () => {
       expect(classify(28)).toEqual('perfect');
     });
 
-    xtest('Large perfect number is classified correctly', () => {
+    test('Large perfect number is classified correctly', () => {
       expect(classify(33550336)).toEqual('perfect');
     });
   });

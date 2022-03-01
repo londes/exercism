@@ -14,17 +14,26 @@
   // note: we could just define an empty array here, then push 1 before we return
   // at the end of our algorithm
   let factors = [1];
+  
+  // since this is a recursive algorithm, created a variable to track how many times
+  // we've been thru the function for debugging purposes.
+  let iterations = 0;
 
 export const classify = (number) => {
-  
+  iterations++;
+  console.log('we called classify() on ' + number + ' and this is iteration ' + iterations);
+
   // check to ensure the number is positive and non-zero
   if (number <= 0) {
+    // reset iterations to 0 since we're done here with this run-thru
+    iterations = 0;
     throw Error('Classification is only possible for natural numbers.');
   } 
   // otherwise, perform the check
   else {
 
-    // if the number is divisible by two, store the quotient and call classify again.
+    // if the number is divisible by two, store the quotient and call classify again
+    // on that number.
     if (number % 2 == 0) {
 
       // if the number is 2, we've reached the end of our recursive loop. we don't
@@ -37,11 +46,11 @@ export const classify = (number) => {
       } else {
         factors.push(number/2);
         classify(number/2);
-        //break classify;
       }
     }
 
-    // if the number is divisible by three, store the quotient and call classify again.
+    // if the number is divisible by three, store the quotient and call classify again
+    // on that number.
     if (number % 3 == 0) {
 
       // if the number is 3, we've reached the end of our recursive loop. we don't
@@ -54,10 +63,16 @@ export const classify = (number) => {
       } else {
         factors.push(number/3);
         classify(number/3);
-        //break classify;
       }
 
     }
+  // output for debugging, checking our array
+  console.log('we\'ve reached the end of our algorithm and the factors are ' + factors);
+
+  // reset iterations to 0 since we're done here with this run-thru
+  iterations = 0;
+
+  // return our array
   return factors;
   }
 };
