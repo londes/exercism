@@ -7,30 +7,37 @@
 // accepts: an integer
 // returns: a classification
 
-  // define our array of factors, including 1 as it is a factor of every number.
-  // we have to define it in the global namespace outside of the function so that
-  // its values are not overwritten every time the function is called.
-  //
-  // note: we could just define an empty array here, then push 1 before we return
-  // at the end of our algorithm
-  let factors = [1];
-  
-  // since this is a recursive algorithm, created a variable to track how many times
-  // we've been thru the function for debugging purposes.
-  let iterations = 0;
-
 export const classify = (number) => {
-  iterations++;
-  console.log('we called classify() on ' + number + ' and this is iteration ' + iterations);
 
   // check to ensure the number is positive and non-zero
   if (number <= 0) {
     // reset iterations to 0 since we're done here with this run-thru
-    iterations = 0;
     throw Error('Classification is only possible for natural numbers.');
   } 
-  // otherwise, perform the check
-  else {
+
+  // define our array of factors, including 1 as it is a factor of every number.
+  // we have to define it in the main function outside of getFactors so that
+  // its values are not overwritten every time the function is called.
+  //
+  // note: we could just define an empty array here, then add 1 before we return
+  // at the end of our algorithm
+  let factors = [1];
+  
+  // since this is a recursive algorithm, created a variable to track how many   times
+  // we've been thru the function for debugging purposes.
+  let iterations = 0;
+
+  let numberFactors = getFactors(number);
+  console.log('we called getFactors and the factors of ' + number + ' are ' + numberFactors);
+
+
+  // getFactors is a recursive algorithm that takes a number and returns an array of all
+  // of its factors.
+  // accepts: a number
+  // returns: an array of factors
+  function getFactors(number) {
+    iterations++;
+    console.log('we called getFactors() on ' + number + ' and this is iteration ' + iterations);
 
     // if the number is divisible by two, store the quotient and call classify again
     // on that number.
@@ -45,7 +52,7 @@ export const classify = (number) => {
       // algorithm again
       } else {
         factors.push(number/2);
-        classify(number/2);
+        getFactors(number/2);
       }
     }
 
@@ -62,7 +69,7 @@ export const classify = (number) => {
       // algorithm again
       } else {
         factors.push(number/3);
-        classify(number/3);
+        getFactors(number/3);
       }
 
     }
@@ -75,4 +82,6 @@ export const classify = (number) => {
   // return our array
   return factors;
   }
+
+
 };

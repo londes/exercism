@@ -16,7 +16,7 @@ describe('Exercise - Perfect Numbers', () => {
   });
 
   describe('Perfect Numbers', () => {
-    test('Smallest perfect number is classified correctly', () => {
+    xtest('Smallest perfect number is classified correctly', () => {
       expect(classify(6)).toEqual('perfect');
     });
 
@@ -24,7 +24,7 @@ describe('Exercise - Perfect Numbers', () => {
       expect(classify(28)).toEqual('perfect');
     });
 
-    test('Large perfect number is classified correctly', () => {
+    xtest('Large perfect number is classified correctly', () => {
       expect(classify(33550336)).toEqual('perfect');
     });
   });
