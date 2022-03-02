@@ -33,8 +33,21 @@ export const classify = (number) => {
   // in our factors algorithm.
   let startingNumber = number;
 
+  // build our array of numbers that are factors of the number passed to classify()
   let numberFactors = getFactors(number, startingNumber);
   console.log('we called getFactors and the factors of ' + number + ' are ' + numberFactors);
+  
+  // get the total of all of the factors
+  let factorsTotal = numberFactors.reduce((first, next) => first + next);
+  console.log('we summed all of the factors and the total is: ' + factorsTotal);
+  
+  // check to see if our factors total is equal to, larger, or smaller than
+  // our starting number
+  if (factorsTotal == number) {
+    return 'perfect';
+  } else if (factorsTotal > number) {
+    return 'abundant';
+  } else return 'deficient';
 
 
   // getFactors is a recursive algorithm that takes a number and returns an array of all
@@ -51,12 +64,12 @@ export const classify = (number) => {
     // on that number.
     if (number % 2 == 0) {
 
-      // if the number is 2, we've reached the end of our recursive loop. we don't
-      // want to break the function either and look to return the completed array at this point.
+      // if the number is 2, we've reached the end of our recursive loop. we want
+      // to return the completed array at this point.
       if (number == 2) {
         factors.push[number];
 
-      // if the number is divisible by two, and is not two, store the number and run this
+      // if the number is divisible by two, store the number and run this
       // algorithm again
       } else {
         factors.push(number/2);
@@ -68,12 +81,12 @@ export const classify = (number) => {
     // on that number.
     if (number % 3 == 0) {
 
-      // if the number is 3, we've reached the end of our recursive loop. we don't
-      // want to break the function either and look to return the completed array at this point
+      // if the number is 3, we've reached the end of our recursive loop. we want
+      // to return the completed array at this point.
       if (number == 3) {
         factors.push[number];
 
-      // if the number is divisible by 3, and is not three, store the number and run this
+      // if the number is divisible by 3, store the number and run this
       // algorithm again
       } else {
         factors.push(number/3);
@@ -82,7 +95,7 @@ export const classify = (number) => {
 
     }
 
-    // these two cases cover when the last number we end at recursively is prime, and not divisible
+    // these two cases cover when the last number we arrive at is prime, and not divisible
     // by two or three. This way, we can still get 2 and/or 3 as a factor by checking
     // against the original number
     if (isPrime(number) && (startingNumber % 2 == 0)) {
