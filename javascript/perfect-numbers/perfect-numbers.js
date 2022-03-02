@@ -63,7 +63,7 @@ export const classify = (number) => {
     // if the number is divisible by two, store the quotient and call classify again
     // on that number.
     if (number % 2 == 0) {
-
+      console.log(number + ' is divisible by 2 and we\'re in the 2 loop');
       // if the number is 2, we've reached the end of our recursive loop. we want
       // to return the completed array at this point.
       if (number == 2) {
@@ -80,7 +80,7 @@ export const classify = (number) => {
     // if the number is divisible by three, store the quotient and call classify again
     // on that number.
     if (number % 3 == 0) {
-
+      console.log(number + ' is divisible by 3 and we\'re in the 3 loop');
       // if the number is 3, we've reached the end of our recursive loop. we want
       // to return the completed array at this point.
       if (number == 3) {
