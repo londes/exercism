@@ -49,6 +49,7 @@ export const classify = (number) => {
     return 'abundant';
   } else return 'deficient';
 
+  // implement recursive check for each integer between 2 and sqrt of number
 
   // getFactors is a recursive algorithm that takes a number and returns an array of all
   // of its factors.
