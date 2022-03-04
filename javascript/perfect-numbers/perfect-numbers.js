@@ -33,8 +33,18 @@ export const classify = (number) => {
   // in our factors algorithm.
   let startingNumber = number;
 
-  // build our array of numbers that are factors of the number passed to classify()
-  let numberFactors = getFactors(number, startingNumber);
+  // the sqrt of the original number is the highest common factor of that number.
+  // so, we want to test if all of the ints between 2 and the sqrt factor into
+  // that number to account for all possible factors.
+  let possibleFactors = [];
+  for(let i=2, s = Math.sqrt(number); i <= s; i++){
+    possibleFactors.push(i);
+  }
+  console.log('the possible factors of ' + number + ' are ' + possibleFactors);
+
+  // build our array of numbers that are factors of the number passed to classify(). we need to give
+  // the array to recursively check each possible factor.
+  let numberFactors = getFactors(number, startingNumber, possibleFactors);
   console.log('we called getFactors and the factors of ' + number + ' are ' + numberFactors);
   
   // get the total of all of the factors
@@ -55,44 +65,45 @@ export const classify = (number) => {
   // of its factors.
   // accepts: a number, and our number again to store it as a starting value
   // returns: an array of factors
-  function getFactors(number, startingNumber) {
+  function getFactors(number, startingNumber, possibleFactors) {
     iterations++;
     console.log('our starting number is: ' + startingNumber);
     console.log('we called getFactors() on ' + number + ' and this is iteration ' + iterations);
     console.log('is ' + number + ' prime? ' + isPrime(number));
 
-    // if the number is divisible by two, store the quotient and call classify again
-    // on that number.
-    if (number % 2 == 0) {
-      console.log(number + ' is divisible by 2 and we\'re in the 2 loop');
-      // if the number is 2, we've reached the end of our recursive loop. we want
-      // to return the completed array at this point.
-      if (number == 2) {
-        factors.push[number];
+    
+    // // if the number is divisible by two, store the quotient and call classify again
+    // // on that number.
+    // if (number % 2 == 0) {
+    //   console.log(number + ' is divisible by 2 and we\'re in the 2 loop');
+    //   // if the number is 2, we've reached the end of our recursive loop. we want
+    //   // to return the completed array at this point.
+    //   if (number == 2) {
+    //     factors.push[number];
 
-      // if the number is divisible by two, store the number and run this
-      // algorithm again
-      } else {
-        factors.push(number/2);
-        getFactors(number/2, startingNumber);
-      }
-    }
+    //   // if the number is divisible by two, store the number and run this
+    //   // algorithm again
+    //   } else {
+    //     factors.push(number/2);
+    //     getFactors(number/2, startingNumber);
+    //   }
+    // }
 
-    // if the number is divisible by three, store the quotient and call classify again
-    // on that number.
-    if (number % 3 == 0) {
-      console.log(number + ' is divisible by 3 and we\'re in the 3 loop');
-      // if the number is 3, we've reached the end of our recursive loop. we want
-      // to return the completed array at this point.
-      if (number == 3) {
-        factors.push[number];
+    // // if the number is divisible by three, store the quotient and call classify again
+    // // on that number.
+    // if (number % 3 == 0) {
+    //   console.log(number + ' is divisible by 3 and we\'re in the 3 loop');
+    //   // if the number is 3, we've reached the end of our recursive loop. we want
+    //   // to return the completed array at this point.
+    //   if (number == 3) {
+    //     factors.push[number];
 
-      // if the number is divisible by 3, store the number and run this
-      // algorithm again
-      } else {
-        factors.push(number/3);
-        getFactors(number/3, startingNumber);
-      }
+    //   // if the number is divisible by 3, store the number and run this
+    //   // algorithm again
+    //   } else {
+    //     factors.push(number/3);
+    //     getFactors(number/3, startingNumber);
+    //   }
 
     }
 
