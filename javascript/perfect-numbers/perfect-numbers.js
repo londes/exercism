@@ -15,7 +15,14 @@ export const classify = (number) => {
   if (number <= 0) {
     // reset iterations to 0 since we're done here with this run-thru
     throw Error('Classification is only possible for natural numbers.');
-  } 
+
+  // we could write more complex handling here for when we get a number
+  // where the only factor is itself, and therefore that number is not included
+  // as a factor, but the only number that's possible for is 1, so we will return 
+  // deficient because its only factor is itself so 0>1
+  } else if (number == 1) {
+    return 'deficient';
+  }
 
   // define our array of factors, including 1 as it is a factor of every number.
   // we have to define it in the main function outside of getFactors so that
@@ -50,7 +57,7 @@ export const classify = (number) => {
   console.log('we called getFactors and the factors of ' + number + ' are ' + factors);
   
   // get the total of all of the factors
-  let factorsTotal = numberFactors.reduce((first, next) => first + next);
+  let factorsTotal = factors.reduce((first, next) => first + next);
   console.log('we summed all of the factors and the total is: ' + factorsTotal);
   
   // check to see if our factors total is equal to, larger, or smaller than
@@ -70,23 +77,27 @@ export const classify = (number) => {
   // returns: an array of factors
   function getFactors(number, possibleFactor, startingNumber) {
     iterations++;
-    console.log('our starting number is: ' + startingNumber);
     console.log('we called getFactors() on ' + number + ' and this is iteration ' + iterations);
+    console.log('our starting number is: ' + startingNumber + ' and the current factor is ' + possibleFactor);
     console.log('is ' + number + ' prime? ' + isPrime(number));
 
     if (number % possibleFactor == 0) {
+      // we've confirmed the possible factor divides into our number, we have to push
+      // it into our array now because it may later divide into a prime number recursively
+      if (!factors.includes(possibleFactor)){factors.push(possibleFactor)};
+      // just a debugger statement
       console.log(number + ' is divisible by '+ possibleFactor + ' and we\'re in the ' + possibleFactor + ' loop');
       // if the number is 2, we've reached the end of our recursive loop. we want
       // to return the completed array at this popossibleFactor.
-      if (number == possibleFactor) {
+      if (number == possibleFactor && !factors.includes(number)) {
         factors.push(possibleFactor);    // if the number is divisible by a possible factor, store the number and run this
       // algorithm again
       } 
       // if our possible factor is larger than the number we are evaluating, do nothing
       if (possibleFactor > number) {  
-      } else {
+      } else if (!factors.includes(number)) {
         factors.push(number/possibleFactor);
-        console.log('we just pushed ' + number/possibleFactor);
+        console.log('we just divided ' + number + ' by ' + possibleFactor + ' and pushed ' + number/possibleFactor);
         getFactors(number/possibleFactor, possibleFactor, startingNumber);
       }
     }
@@ -94,51 +105,16 @@ export const classify = (number) => {
     // these two cases cover when the last number we arrive at is prime, and not divisible
     // by two or three. This way, we can still get 2 and/or 3 as a factor by checking
     // against the original number
-    if (isPrime(number) && (startingNumber % number == 0)) {
+    if (isPrime(number) && !factors.includes(number)) {
+      console.log('we\'re in the prime push spot and we\'re about to push: ' + number);
       factors.push(number);
     }
-
-    // reset iterations to 0 since we're done here with this run-thru
-    iterations = 0;
 
     // return our array
     return factors;
   }
+}
 
-    // // if the number is divisible by two, store the quotient and call classify again
-    // // on that number.
-    // if (number % 2 == 0) {
-    //   console.log(number + ' is divisible by 2 and we\'re in the 2 loop');
-    //   // if the number is 2, we've reached the end of our recursive loop. we want
-    //   // to return the completed array at this point.
-    //   if (number == 2) {
-    //     factors.push[number];
-
-    //   // if the number is divisible by two, store the number and run this
-    //   // algorithm again
-    //   } else {
-    //     factors.push(number/2);
-    //     getFactors(number/2, startingNumber);
-    //   }
-    // }
-
-    // // if the number is divisible by three, store the quotient and call classify again
-    // // on that number.
-    // if (number % 3 == 0) {
-    //   console.log(number + ' is divisible by 3 and we\'re in the 3 loop');
-    //   // if the number is 3, we've reached the end of our recursive loop. we want
-    //   // to return the completed array at this point.
-    //   if (number == 3) {
-    //     factors.push[number];
-
-    //   // if the number is divisible by 3, store the number and run this
-    //   // algorithm again
-    //   } else {
-    //     factors.push(number/3);
-    //     getFactors(number/3, startingNumber);
-    //   }
-
-    }
 
   // function that constructs an array of all possible lowest factors of a number.
   // The highest common factor of any number must be its square root. Therefore,
@@ -158,7 +134,7 @@ export const classify = (number) => {
 function isPrime(number) {
   for(let i=2, s = Math.sqrt(number); i <= s; i++){
     if(number % i === 0) return false;
-  return number >= 2;
+    return number >= 2;
   }
 }
 
