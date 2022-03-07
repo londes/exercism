@@ -11,6 +11,10 @@ import { start } from "repl";
 
 export const classify = (number) => {
 
+  // since this is a recursive algorithm, created a variable to track how many   times
+  // we've been thru the function for debugging purposes.
+  let iterations = 0;
+
   // check to ensure the number is positive and non-zero
   if (number <= 0) {
     // reset iterations to 0 since we're done here with this run-thru
@@ -20,7 +24,7 @@ export const classify = (number) => {
   // where the only factor is itself, and therefore that number is not included
   // as a factor, but the only number that's possible for is 1, so we will return 
   // deficient because its only factor is itself so 0>1
-  } else if (number == 1) {
+  } else if (number == 1 || number == 2 || (isPrime(number) && iterations == 0)) {
     return 'deficient';
   }
 
@@ -31,10 +35,6 @@ export const classify = (number) => {
   // note: we could just define an empty array here, then add 1 before we return
   // at the end of our algorithm
   let factors = [1];
-  
-  // since this is a recursive algorithm, created a variable to track how many   times
-  // we've been thru the function for debugging purposes.
-  let iterations = 0;
 
   // we have to store the starting number passed into classify to deal with prime numbers
   // in our factors algorithm. This is just for debugging purposes and can be removed if
