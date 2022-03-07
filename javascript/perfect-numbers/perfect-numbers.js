@@ -36,11 +36,8 @@ export const classify = (number) => {
   // the sqrt of the original number is the highest common factor of that number.
   // so, we want to test if all of the ints between 2 and the sqrt factor into
   // that number to account for all possible factors.
-  let possibleFactors = [];
-  for(let i=2, s = Math.sqrt(number); i <= s; i++){
-    possibleFactors.push(i);
-  }
-  console.log('the possible factors of ' + number + ' are ' + possibleFactors);
+  let possibleFactors = getLowestPossibleFactors();
+  console.log('the possible lowest common factors of ' + number + ' are ' + possibleFactors);
 
   // build our array of numbers that are factors of the number passed to classify(). we need to give
   // the array to recursively check each possible factor.
@@ -72,7 +69,7 @@ export const classify = (number) => {
     console.log('is ' + number + ' prime? ' + isPrime(number));
 
     possibleFactors.forEach(int => {
-      console.log('we are in the possibleFactors forEach and we\'re evaluating + ' + int );
+      console.log('we are in the possibleFactors forEach and we\'re evaluating ' + int );
       if (number % int == 0) {
         console.log(number + ' is divisible by '+ int + ' and we\'re in the ' + int + ' loop');
         // if the number is 2, we've reached the end of our recursive loop. we want
@@ -144,6 +141,16 @@ export const classify = (number) => {
 
     }
 
+  // function that constructs an array of all possible lowest factors of a number.
+  // The highest common factor of any number must be its square root. Therefore,
+  // we should check each number leading up to its square root in our check.
+  function getLowestPossibleFactors () {
+      let getFactors = [];
+      for(let i=2, s = Math.sqrt(number); i <= s; i++){
+        getFactors.push(i);
+      }
+      return getFactors;
+  }
 
 // our algorithm fails if after dividing down into a number's factors, it ends on a prime number.
 // for example, 28 is divisible by 2, but 28/2 = 14, 14/2 = 7, and 7 is prime so 2 is never pushed
