@@ -138,3 +138,4 @@ function isPrime(number) {
   }
 }
 
+classify();
