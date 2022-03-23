@@ -1,5 +1,3 @@
-import { decode } from "punycode";
-
 export function decodedValue(decodedValue: Array<string>) {
 
   // define our Band object
@@ -9,7 +7,7 @@ export function decodedValue(decodedValue: Array<string>) {
   }
 
   // build our array of Band objects to compare to the
-  // decodedValue
+  // decodedValue array color values
   let bandsArray: Array<Band> = [
     {
       color: 'black',
@@ -53,14 +51,23 @@ export function decodedValue(decodedValue: Array<string>) {
     },
   ]
 
+  // creates a new array of the decoded color values
+  // that match to the input color name string
   let colorValues: Array<number> = getDecodedValue(decodedValue, bandsArray);
   console.log('color values are: ' + colorValues);
 
+  // slice the first two in case of >2 color names
+  // and join them to create a number that satisfies our
+  // test
   let decodedNum = Number(colorValues.slice(0, 2).join(''));
   console.log('decoded num is: ' + decodedNum);
 
   return decodedNum;
 
+  // accepts: our color values we need to 
+  // decode, and our Bands array object
+  // returns: an array of color values that correspond
+  // to the color name in our Bands array
   function getDecodedValue(decoded: Array<string>, bands: Array<Band>) {
     let colorValuesArray: Array<number> = [];
     decoded.forEach(color => {
