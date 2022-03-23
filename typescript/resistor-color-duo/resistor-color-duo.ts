@@ -1,3 +1,5 @@
+import { decode } from "punycode";
+
 export function decodedValue(decodedValue: Array<string>) {
 
   // define our Band object
@@ -51,20 +53,24 @@ export function decodedValue(decodedValue: Array<string>) {
     },
   ]
 
-  let colorValues: Array<number> = getValues(decodedValue, bandsArray);
+  let colorValues: Array<number> = getDecodedValue(decodedValue, bandsArray);
+  console.log('color values are: ' + colorValues);
 
-  console.log(colorValues);
+  let decodedNum = Number(colorValues.slice(0, 2).join(''));
+  console.log('decoded num is: ' + decodedNum);
 
-  function getValues(decoded: Array<string>, bands: Array<Band>) {
-    console.log('we\'re in getValues and decoded is ' + decoded + ' and bands is ' + bands);
-    let testArray: Array<number> = bands.filter(band => {
-      console.log('we\'re in the testArray filter and band color is: ' + band.color + ' and the match is ' + decoded.includes(band.color));
-      return decoded.includes(band.color);
-    }).map(band => {
-      console.log('we\'re now in the map and band color is ' + band.color + ' and its value is ' + band.colorValue)
-      return band.colorValue
-    });
-    return testArray;
+  return decodedNum;
+
+  function getDecodedValue(decoded: Array<string>, bands: Array<Band>) {
+    let colorValuesArray: Array<number> = [];
+    decoded.forEach(color => {
+      bands.forEach(band => {
+        if (color === band.color) {
+          colorValuesArray.push(band.colorValue);
+        }
+      })
+    })
+    return colorValuesArray;
   }
 }
 
