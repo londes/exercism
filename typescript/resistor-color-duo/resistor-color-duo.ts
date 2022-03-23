@@ -1,9 +1,13 @@
 export function decodedValue(decodedValue: Array<string>) {
+
+  // define our Band object
   type Band = {
     color: string;
     colorValue: number;
   }
 
+  // build our array of Band objects to compare to the
+  // decodedValue
   let bandsArray: Array<Band> = [
     {
       color: 'black',
@@ -11,60 +15,57 @@ export function decodedValue(decodedValue: Array<string>) {
     },
     {
       color: 'brown',
-      colorValue: 0
+      colorValue: 1
     },
     {
       color: 'red',
-      colorValue: 0
+      colorValue: 2
     },
     {
       color: 'orange',
-      colorValue: 0
+      colorValue: 3
     },
     {
       color: 'yellow',
-      colorValue: 0
+      colorValue: 4
     },
     {
       color: 'green',
-      colorValue: 0
+      colorValue: 5
     },
     {
       color: 'blue',
-      colorValue: 0
+      colorValue: 6
     },
     {
       color: 'violet',
-      colorValue: 0
+      colorValue: 7
     },
     {
       color: 'grey',
-      colorValue: 0
+      colorValue: 8
     },
     {
       color: 'white',
-      colorValue: 0
+      colorValue: 9
     },
   ]
 
-  let colorValues: Array<number> = [];
+  let colorValues: Array<number> = getValues(decodedValue, bandsArray);
 
-  // let valuesArray = decodedValue.forEach(value => {
-  //   bandsArray.filter(band => {
-  //     return band.color == value;
-  //   }).map(() => {
-  //     return band.colorValue;
-  //   })
-  // });
+  console.log(colorValues);
 
-  // return valuesArray;
-
-  // function getValues(decoded: Array<string>, bands: Array<Band>) {
-  //   return bands.filter(band => {
-  //     return decoded.includes(band.color);
-  //   }).map(band => band.colorValue);
-  // }
-};
-
+  function getValues(decoded: Array<string>, bands: Array<Band>) {
+    console.log('we\'re in getValues and decoded is ' + decoded + ' and bands is ' + bands);
+    let testArray: Array<number> = bands.filter(band => {
+      console.log('we\'re in the testArray filter and band color is: ' + band.color + ' and the match is ' + decoded.includes(band.color));
+      return decoded.includes(band.color);
+    }).map(band => {
+      console.log('we\'re now in the map and band color is ' + band.color + ' and its value is ' + band.colorValue)
+      return band.colorValue
+    });
+    return testArray;
+  }
+}
 
 
