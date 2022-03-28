@@ -60,15 +60,23 @@ export function decodedResistorValue(decodedValue: Array<string>): string {
   // and join them to create a number that satisfies our
   // test
   let decodedNum = Number(colorValues.slice(0, 2).join(''));
+
+  // this operation takes the first two numbers of ourray after being combined,
+  // then multiplies them by the appropriate magnitude of 10 to get the
+  // correct amount of zeros to append.
+  decodedNum = decodedNum * Math.pow(10, Number(colorValues[2]));
   console.log('decoded num is: ' + decodedNum);
 
-  return '';
+  // our return statement checks for a value less than 1000. If so, we know it's
+  // ohms and just to return as is. If not, output should be divided by one thousand
+  // and expressed as kiloohms
+  return (decodedNum < 1000) ? (decodedNum + ' ohms') : (decodedNum / 1000 + ' kiloohms');
 
   // accepts: our color values we need to 
   // decode, and our Bands array object
   // returns: an array of color values that correspond
   // to the color name in our Bands array
-  function getDecodedValue(decoded: Array<string>, bands: Array<Band>) {
+  function getDecodedValue(decoded: Array<string>, bands: Array<Band>): Array<number> {
     let colorValuesArray: Array<number> = [];
     decoded.forEach(color => {
       bands.forEach(band => {
@@ -78,5 +86,10 @@ export function decodedResistorValue(decodedValue: Array<string>): string {
       })
     })
     return colorValuesArray;
+  }
+
+  function buildResistorValue(digits: number, numZeros: number): number {
+
+    return 1;
   }
 }
