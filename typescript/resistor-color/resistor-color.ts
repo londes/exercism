@@ -7,7 +7,7 @@ export const colorCode = (color: string): number => {
 }
 
 // mnemonic array of colors
-export const COLORS = [
+export const COLORS: Array<string> = [
   'black',
   'brown',
   'red',
