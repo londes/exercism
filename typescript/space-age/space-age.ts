@@ -17,8 +17,6 @@ export function age(planet: string, seconds: number): number {
     'neptune': 164.79132
   }
 
-  console.log('the planet is: ' + planet + '\n the seconds are: ' + seconds + '\n the seconds in earth years are: ' + earthYear + '\n and the quotient is ' + planetYearQuotient[planet]);
-
   // multiply the length of an earth year by the appropriate
   // planet's multiplier, round to two decimal points, and
   // convert it back into a number
