@@ -2,7 +2,7 @@ export function age(planet: string, seconds: number): number {
 
   // define an Earth year based on seconds so we can use the 
   // different planetary year lengths as a multiplier
-  const earthYear: number = 31557600;
+  const earthYear: number = seconds / 60 / 60 / 24 / 365.25;
 
   // object containing each planet and its relative year
   // length to an earth year
@@ -22,5 +22,5 @@ export function age(planet: string, seconds: number): number {
   // multiply the length of an earth year by the appropriate
   // planet's multiplier, round to two decimal points, and
   // convert it back into a number
-  return Number(((seconds / 60 / 60 / 24 / 365.25) * planetYearQuotient[planet]).toFixed(2));
+  return Number((earthYear * planetYearQuotient[planet]).toFixed(2));
 }
