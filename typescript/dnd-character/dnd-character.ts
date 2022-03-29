@@ -25,13 +25,11 @@ export class DnDCharacter {
     // create a new array for our dice roll values, then
     // define our min and max ceiling values for our dice rolls
     let diceRolls: Array<number> = [];
-    let min: number = Math.ceil(1);
-    let max: number = Math.ceil(7);
 
     // roll four times, or in other words, "rolling"
     // a random integer from 1-6 and push to our array
     for (let i = 0; i < 4; i++) {
-      diceRolls.push(Math.floor(Math.random() * (max - min) + min))
+      diceRolls.push(Math.floor(Math.random() * 6) + 1);
     }
 
     // for our return statement, we sort lowest to highest, then remove the
