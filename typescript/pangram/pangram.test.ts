@@ -5,11 +5,11 @@ describe('Pangram()', () => {
     expect(isPangram('')).toBe(false)
   })
 
-  xit('perfect lower case', () => {
+  it('perfect lower case', () => {
     expect(isPangram('abcdefghijklmnopqrstuvwxyz')).toBe(true)
   })
 
-  xit('only lower case', () => {
+  it('only lower case', () => {
     expect(isPangram('the quick brown fox jumps over the lazy dog')).toBe(true)
   })
 
