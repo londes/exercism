@@ -1,5 +1,3 @@
-import { appendFile } from "fs";
-
 export function isPangram(testPangram: string): boolean {
 
   // define our alphabet array for comparing the letters
