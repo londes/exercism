@@ -7,6 +7,7 @@ export function isPangram(testPangram: string): boolean {
 
   // remove whitespace
   let pangramCheck: Array<string> = testPangram.split('').filter(character => {
+    character.toLowerCase();
     if (alphabet.includes(character)) {
       if (!usedLetters.includes(character)) {
         usedLetters.push(character);
@@ -17,10 +18,16 @@ export function isPangram(testPangram: string): boolean {
 
   usedLetters.sort();
 
-  pangramCheck.forEach(character => {
-    if (!alphabet.includes(character) || (alphabet != usedLetters)) {
-      return false;
-    }
-  })
+  console.log('original phrase is: ' + testPangram);
+  console.log('alphabet is: ' + alphabet)
+  console.log('pangramCheck is: ' + pangramCheck);
+  console.log('used letters is: ' + usedLetters);
+  console.log('does alphabet equal usedletters? ' + (alphabet == usedLetters));
+
+
+
+  if (alphabet !== usedLetters) {
+    return false;
+  }
   return true;
 }

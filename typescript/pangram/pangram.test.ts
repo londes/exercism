@@ -1,11 +1,11 @@
 import { isPangram } from './pangram'
 
 describe('Pangram()', () => {
-  it('empty sentence', () => {
+  xit('empty sentence', () => {
     expect(isPangram('')).toBe(false)
   })
 
-  it('perfect lower case', () => {
+  xit('perfect lower case', () => {
     expect(isPangram('abcdefghijklmnopqrstuvwxyz')).toBe(true)
   })
 
