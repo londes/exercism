@@ -1,12 +1,12 @@
 import { Matrix } from './matrix'
 
 describe('Matrix', () => {
-  it('extract row from one number matrix', () => {
+  xit('extract row from one number matrix', () => {
     const expected = [1]
     expect(new Matrix('1').rows[0]).toEqual(expected)
   })
 
-  xit('can extract row', () => {
+  it('can extract row', () => {
     const expected = [3, 4]
     expect(new Matrix('1 2\n3 4').rows[1]).toEqual(expected)
   })

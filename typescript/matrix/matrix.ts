@@ -1,13 +1,24 @@
 export class Matrix {
-  constructor() {
-    throw new Error('Remove this statement and implement this function')
+  matrix: Array<Array<string>>;
+
+  constructor(matrixStarter: string) {
+    this.matrix = this.createMatrix(matrixStarter);
   }
 
-  get rows(): unknown {
-    throw new Error('Remove this statement and implement this function')
+  get rows(): Array<string> {
+    console.log(this.matrix);
+    return [];
   }
 
-  get columns(): unknown {
-    throw new Error('Remove this statement and implement this function')
+  get columns(): Array<string> {
+    return [];
+  }
+
+  createMatrix(arrayStarter: string): Array {
+    let newMatrix: Array<string> = [];
+    arrayStarter.slice().split('\n').forEach(value => {
+      newMatrix.push(value.split(' '));
+    });
+    return newMatrix;
   }
 }
