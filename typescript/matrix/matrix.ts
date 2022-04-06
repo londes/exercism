@@ -14,8 +14,8 @@ export class Matrix {
     return [];
   }
 
-  createMatrix(arrayStarter: string): Array {
-    let newMatrix: Array<string> = [];
+  createMatrix(arrayStarter: string): Array<Array<string>> {
+    let newMatrix: Array<Array<string>> = [];
     arrayStarter.slice().split('\n').forEach(value => {
       newMatrix.push(value.split(' '));
     });
