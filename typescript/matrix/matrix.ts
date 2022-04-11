@@ -1,7 +1,7 @@
 export class Matrix {
-  matrix: Array<Array<string>>
+  matrix: Array<Array<number>>
   _rows: Array<Array<number>>
-  _columns: Array<number>
+  _columns: Array<Array<number>>
 
   constructor(matrixStarter: string) {
     this.matrix = this.createMatrix(matrixStarter);
@@ -10,27 +10,42 @@ export class Matrix {
   }
 
   get rows(): Array<Array<number>> {
-    let rowsArray: Array<Array<any>> = this.matrix.slice();
+    return this.matrix
+  }
 
-    for (let i = 0; i < rowsArray.length; i++) {
-      for (let j = 0; j < rowsArray[i].length; j++) {
-        rowsArray[i][j] = parseInt(rowsArray[i][j]);
-        console.log('for row value ' + i + ' and column ' + j + ' we have ' + rowsArray[i][j])
+  get columns(): Array<Array<number>> {
+    let newColumns: Array<Array<number>> = [];
+
+    for (let i = 0; i < this.matrix.length; i++) {
+      let oneColumn: Array<number> = [];
+      for (let j = 0; j < this.matrix[i].length; j++) {
+        oneColumn.push(this.matrix[j][i]);
       }
+      newColumns.push(oneColumn);
     }
-
-    return rowsArray;
+    console.log('new columns: ' + newColumns);
+    return newColumns;
   }
 
-  get columns(): Array<number> {
-    return [4, 5, 6];
-  }
+  // copy our starting matrix except that we're returing a new
+  // version of that matrix with numbers instead of strings
+  createMatrix(arrayStarter: string): Array<Array<number>> {
 
-  createMatrix(arrayStarter: string): Array<Array<string>> {
-    let newMatrix: Array<Array<string>> = [];
+    // declare a new array of type any, because we are modifying
+    // its values from strings into numbers so it needs to be able
+    // to hold both.
+    let newMatrix: Array<Array<any>> = [];
+
     arrayStarter.slice().split('\n').forEach(value => {
       newMatrix.push(value.split(' '));
     });
+
+    for (let i = 0; i < newMatrix.length; i++) {
+      for (let j = 0; j < newMatrix[i].length; j++) {
+        newMatrix[i][j] = parseInt(newMatrix[i][j]);
+      }
+    }
+
     return newMatrix;
   }
 }
