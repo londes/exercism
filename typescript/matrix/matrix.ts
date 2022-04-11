@@ -1,6 +1,6 @@
 export class Matrix {
   matrix: Array<Array<string>>
-  _rows: Array<number>
+  _rows: Array<Array<number>>
   _columns: Array<number>
 
   constructor(matrixStarter: string) {
@@ -9,22 +9,17 @@ export class Matrix {
     this._columns = this.columns
   }
 
-  get rows(): Array<number> {
-    console.log('matrix: ' + this.matrix);
+  get rows(): Array<Array<number>> {
+    let rowsArray: Array<Array<any>> = this.matrix.slice();
 
-    let rowsArray: Array<Array<string>> = this.matrix.slice();
-    console.log('rowsArray before: ' + rowsArray);
-    // let rowsNums: Array<number> = [];
+    for (let i = 0; i < rowsArray.length; i++) {
+      for (let j = 0; j < rowsArray[i].length; j++) {
+        rowsArray[i][j] = parseInt(rowsArray[i][j]);
+        console.log('for row value ' + i + ' and column ' + j + ' we have ' + rowsArray[i][j])
+      }
+    }
 
-    // for (let i = 0; i < rowsArray.length; i++) {
-    //   for (let j = 0; j < rowsArray[i].length; j++) {
-    //     parseInt(rowsArray[i][j]);
-    //   }
-    // }
-
-    // console.log('rowsArray after: ' + rowsArray);
-
-    return [1, 2, 3]
+    return rowsArray;
   }
 
   get columns(): Array<number> {
