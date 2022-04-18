@@ -6,14 +6,18 @@ export class Robot {
   }
 
   public get name(): string {
-    return this._name;
+    return this.generateName();
   }
 
   public resetName(): void {
-    this._name = '';
+    this._name = this.generateName();
   }
 
   public static releaseNames(): void {
-    throw new Error('Implement Robot.releaseNames')
+    // actually not sure what this is supposed to do?
+  }
+
+  private generateName(): string {
+    return 'GG123'
   }
 }

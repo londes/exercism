@@ -39,11 +39,11 @@ describe('Robot', () => {
     expect(robot.name).toMatch(NAME_RE)
   })
 
-  xit('name is the same each time', () => {
+  it('name is the same each time', () => {
     expect(robot.name).toEqual(robot.name)
   })
 
-  xit('different robots have different names', () => {
+  it('different robots have different names', () => {
     const differentRobot = new Robot()
     expect(differentRobot.name).not.toEqual(robot.name)
   })
