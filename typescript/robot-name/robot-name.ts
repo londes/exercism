@@ -22,8 +22,6 @@ export class Robot {
 
     let newName = '' + characters.charAt(Math.floor(Math.random() * 26)) + '' + characters.charAt(Math.floor(Math.random() * 26)) + '' + Math.floor(Math.random() * 10) + '' + Math.floor(Math.random() * 10) + '' + Math.floor(Math.random() * 10)
 
-    console.log(newName)
-
     return newName;
   }
 }
