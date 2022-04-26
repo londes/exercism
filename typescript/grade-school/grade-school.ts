@@ -6,11 +6,11 @@ export class GradeSchool {
   }
 
   roster(): object {
-    return { 1: [''], 2: [''] };
+    return {};
   }
 
-  add(name: string, grade: number): any {
-    this._roster.grade
+  add(inputName: string, inputGrade: number) {
+    Object.values(GradeSchool)[inputGrade - 1].push(inputName)
   }
 
   grade() {
