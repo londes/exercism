@@ -8,7 +8,9 @@ export class GradeSchool {
   }
 
   roster(): Roster {
-    return Object.assign({}, this.#_roster)
+    // this creates a deep copy as opposed to spread which
+    // creates a shallow copy
+    return JSON.parse(JSON.stringify(this.#_roster))
   }
 
   add(inputName: string, inputGrade: number) {
