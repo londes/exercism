@@ -14,11 +14,7 @@ export class GradeSchool {
   }
 
   add(inputName: string, inputGrade: number) {
-    if (this.#_roster[inputGrade]) {
-      this.#_roster[inputGrade] = [...this.#_roster[inputGrade], inputName].sort();
-    } else {
-      this.#_roster[inputGrade] = [inputName];
-    }
+    this.#_roster[inputGrade] = this.#_roster[inputGrade] ? [...this.#_roster[inputGrade], inputName].sort() : [inputName]
   }
 
   grade(inputGrade: number) {
