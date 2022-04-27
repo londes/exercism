@@ -44,11 +44,11 @@ describe('School', () => {
     expect(school.grade(5)).toEqual(expectedStudents)
   })
 
-  xit('grade returns an empty array if there are no students in that grade', () => {
+  it('grade returns an empty array if there are no students in that grade', () => {
     expect(school.grade(1)).toEqual([])
   })
 
-  xit('the students names in each grade in the roster are sorted', () => {
+  it('the students names in each grade in the roster are sorted', () => {
     school.add('Jennifer', 4)
     school.add('Kareem', 6)
     school.add('Christopher', 4)
@@ -62,7 +62,7 @@ describe('School', () => {
     expect(school.roster()).toEqual(expectedSortedStudents)
   })
 
-  xit('roster cannot be modified outside of module', () => {
+  it('roster cannot be modified outside of module', () => {
     school.add('Aimee', 2)
     const roster = school.roster()
     roster[2].push('Oops.')
