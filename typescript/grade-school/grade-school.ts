@@ -8,7 +8,7 @@ export class GradeSchool {
   }
 
   roster(): Roster {
-    return { ...this.#_roster }
+    return Object.assign({}, this.#_roster)
   }
 
   add(inputName: string, inputGrade: number) {
