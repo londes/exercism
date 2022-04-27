@@ -1,19 +1,25 @@
+type Roster = { [key: number]: Array<string> };
+
 export class GradeSchool {
-  _roster: { grade: number; nameArray: Array<string> };
+  _roster: Roster = {};
 
   constructor() {
-    _roster: this.roster();
+    this._roster = this.roster();
   }
 
-  roster(): object {
-    return {};
+  roster(): Roster {
+    return this._roster;
   }
 
   add(inputName: string, inputGrade: number) {
-    Object.values(GradeSchool)[inputGrade - 1].push(inputName)
+    if (this._roster[inputGrade]) {
+      this._roster[inputGrade] = [...this._roster[inputGrade], inputName].sort();
+    } else {
+      this._roster[inputGrade] = [inputName];
+    }
   }
 
-  grade() {
-    throw new Error('Remove this statement and implement this function')
+  grade(inputGrade: number) {
+    return [''];
   }
 }
