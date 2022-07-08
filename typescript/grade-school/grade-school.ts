@@ -14,10 +14,12 @@ export class GradeSchool {
   }
 
   add(inputName: string, inputGrade: number) {
+    // look to implemet object to check for existing name, i.e. name : boolean, as opposed to array. Check out map object (lookup table)
     this.#_roster[inputGrade] = this.#_roster[inputGrade] ? [...this.#_roster[inputGrade], inputName].sort() : [inputName]
   }
 
   grade(inputGrade: number) {
+    // spread will work to ensure that grade cannot be modified for later test
     return this.#_roster[inputGrade] || [];
   }
 }

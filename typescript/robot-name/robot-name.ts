@@ -1,8 +1,10 @@
 export class Robot {
   _name: string;
+  usedNames: Array<string>;
 
   constructor() {
     this._name = this.generateName();
+    this.usedNames = [];
   }
 
   public get name(): string {
@@ -18,7 +20,8 @@ export class Robot {
   }
 
   private generateName(): string {
-    let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    let characters: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    let usedNames: Array<string> = [];
 
     let newName = '' + characters.charAt(Math.floor(Math.random() * 26)) + '' + characters.charAt(Math.floor(Math.random() * 26)) + '' + Math.floor(Math.random() * 10) + '' + Math.floor(Math.random() * 10) + '' + Math.floor(Math.random() * 10)
 
