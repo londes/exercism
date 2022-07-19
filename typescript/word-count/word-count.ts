@@ -1,16 +1,15 @@
 export function count(words: String) {
 
-  interface WordsDict {
-    [key: string]: number;
-  }
+  const wordsDict: { [key: string]: number } = {}
 
-  words.split(' ').forEach((word) => {
-    console.log(word)
-    if (word in WordsDict) {
-      WordsDict[word] = 1;
+  words.toLowerCase().split(' ').forEach((word) => {
+    if (!(word in wordsDict)) {
+      wordsDict[word] = 1;
     } else {
-      WordsDict[word] += 1;
+      wordsDict[word] += 1;
     }
   });
-  return WordsDict
+  console.log(wordsDict)
+  const wordsMap = new Map(Object.entries(wordsDict))
+  return wordsMap
 }

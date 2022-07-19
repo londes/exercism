@@ -6,7 +6,7 @@ describe('words()', () => {
     expect(count('word')).toEqual(expectedCounts)
   })
 
-  xit('counts one of each', () => {
+  it('counts one of each', () => {
     const expectedCounts = new Map(Object.entries({ one: 1, of: 1, each: 1 }))
     expect(count('one of each')).toEqual(expectedCounts)
   })
