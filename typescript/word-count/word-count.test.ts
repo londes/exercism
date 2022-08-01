@@ -53,29 +53,29 @@ describe('words()', () => {
     expect(count('¡Hola! ¿Qué tal? Привет!')).toEqual(expectedCounts)
   })
 
-  xit('counts multiline', () => {
+  it('counts multiline', () => {
     const expectedCounts = new Map(Object.entries({ hello: 1, world: 1 }))
     expect(count('hello\nworld')).toEqual(expectedCounts)
   })
 
-  xit('counts tabs', () => {
+  it('counts tabs', () => {
     const expectedCounts = new Map(Object.entries({ hello: 1, world: 1 }))
     expect(count('hello\tworld')).toEqual(expectedCounts)
   })
 
-  xit('counts multiple spaces as one', () => {
+  it('counts multiple spaces as one', () => {
     const expectedCounts = new Map(Object.entries({ hello: 1, world: 1 }))
     expect(count('hello  world')).toEqual(expectedCounts)
   })
 
-  xit('does not count leading or trailing whitespace', () => {
+  it('does not count leading or trailing whitespace', () => {
     const expectedCounts = new Map(
       Object.entries({ introductory: 1, course: 1 })
     )
     expect(count('\t\tIntroductory Course      ')).toEqual(expectedCounts)
   })
 
-  xit('handles properties that exist on Object’s prototype', () => {
+  it('handles properties that exist on Object’s prototype', () => {
     const expectedCounts = new Map(
       Object.entries({
         reserved: 1,

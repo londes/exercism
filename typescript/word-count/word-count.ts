@@ -1,15 +1,9 @@
-export function count(words: String) {
+export function count(words: String): Map<string, number> {
 
-  const wordsDict: { [key: string]: number } = {}
+  const wordsMap = new Map()
 
-  words.toLowerCase().split(' ').forEach((word) => {
-    if (!(word in wordsDict)) {
-      wordsDict[word] = 1;
-    } else {
-      wordsDict[word] += 1;
-    }
+  words.toLowerCase().trim().split(/\s+/).forEach((word) => {
+    wordsMap.set(word, 1 + (wordsMap.get(word) || 0))
   });
-  console.log(wordsDict)
-  const wordsMap = new Map(Object.entries(wordsDict))
   return wordsMap
 }
