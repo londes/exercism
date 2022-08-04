@@ -1,4 +1,6 @@
 export function commands(input: number): Array<string> {
+
+  console.log('number is: ' + input)
   let moves: Array<string> = [
     'wink',
     'double blink',
@@ -24,13 +26,20 @@ export function commands(input: number): Array<string> {
   console.log('binary check: ' + binary)
 
   //// covnert binary number to commands
-  let binaryNums: Array<number> = binary.split('').map(convertToNum);
+  let binaryNums: Array<number> = binary.split('').map(parseInt).reverse();
 
-  function convertToNum(stringNum: string): number {
-    return parseInt(stringNum)
+  console.log('binaryNums is: ' + binaryNums)
+
+  for (let i = 0; i < binaryNums.length; i++) {
+    if (binaryNums[i] == 1)
+      outputCommands.push(moves[i])
   }
 
+  if (outputCommands.includes('reverse')) {
+    outputCommands.pop()
+    outputCommands.reverse()
+  }
 
-
+  console.log('outputCommands right before returnning is: ' + outputCommands)
   return outputCommands
 }

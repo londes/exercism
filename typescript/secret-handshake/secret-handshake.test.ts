@@ -2,15 +2,15 @@ import { commands } from './secret-handshake'
 
 describe('Secret Handshake', () => {
   describe('Create A Handshake For A Number', () => {
-    it('wink for 1', () => {
+    xit('wink for 1', () => {
       expect(commands(1)).toEqual(['wink'])
     })
 
-    it('double blink for 10', () => {
+    xit('double blink for 10', () => {
       expect(commands(2)).toEqual(['double blink'])
     })
 
-    it('close your eyes for 100', () => {
+    xit('close your eyes for 100', () => {
       expect(commands(4)).toEqual(['close your eyes'])
     })
 
@@ -18,7 +18,7 @@ describe('Secret Handshake', () => {
       expect(commands(8)).toEqual(['jump'])
     })
 
-    xit('combine two actions', () => {
+    it('combine two actions', () => {
       expect(commands(3)).toEqual(['wink', 'double blink'])
     })
 
