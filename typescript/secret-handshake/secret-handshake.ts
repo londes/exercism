@@ -1,3 +1,24 @@
-export function commands() {
-  throw new Error('Remove this statement and implement this function')
+export function commands(input: number): Array<string> {
+  let outputCommands: Array<string> = []
+
+  let num: number = input
+
+  // if number is divisible by 2, start with a 0.
+  // otherwise, start with a 1
+  let binary: string = (num % 2).toString()
+
+  // repeat this process above while prepending
+  // to our binary string.
+  while (num > 1) {
+    num = parseInt((num / 2).toString())
+    binary = (num % 2) + binary
+  }
+  console.log('binary check: ' + binary)
+
+  // covnert binary number to commands
+
+
+
+
+  return outputCommands
 }

@@ -6,11 +6,11 @@ describe('Secret Handshake', () => {
       expect(commands(1)).toEqual(['wink'])
     })
 
-    xit('double blink for 10', () => {
+    it('double blink for 10', () => {
       expect(commands(2)).toEqual(['double blink'])
     })
 
-    xit('close your eyes for 100', () => {
+    it('close your eyes for 100', () => {
       expect(commands(4)).toEqual(['close your eyes'])
     })
 
