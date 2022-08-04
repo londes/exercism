@@ -1,6 +1,14 @@
 export function commands(input: number): Array<string> {
+  let moves: Array<string> = [
+    'wink',
+    'double blink',
+    'close your eyes',
+    'jump',
+    'reverse'
+  ]
   let outputCommands: Array<string> = []
 
+  //// convert number to binary
   let num: number = input
 
   // if number is divisible by 2, start with a 0.
@@ -15,8 +23,12 @@ export function commands(input: number): Array<string> {
   }
   console.log('binary check: ' + binary)
 
-  // covnert binary number to commands
-
+  //// covnert binary number to commands
+  binary.split('').map(value => { parseInt(value) }).reverse().forEach(num => {
+    if (num == 1) {
+      outputCommands.push(moves.indexOf(num))
+    }
+  })
 
 
 
