@@ -26,7 +26,7 @@ export function commands(input: number): Array<string> {
   console.log('binary check: ' + binary)
 
   //// covnert binary number to commands
-  let binaryNums: Array<number> = binary.split('').map(parseInt).reverse();
+  let binaryNums: Array<number> = Array.from(binary, Number).reverse();
 
   console.log('binaryNums is: ' + binaryNums)
 
