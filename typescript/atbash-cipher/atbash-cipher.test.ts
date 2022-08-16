@@ -17,7 +17,7 @@ describe('AtbashCipher', () => {
       expect(cipherText).toEqual('lnt')
     })
 
-    xit('encode spaces', () => {
+    it('encode spaces', () => {
       const cipherText = encode('O M G')
       expect(cipherText).toEqual('lnt')
     })
@@ -27,7 +27,7 @@ describe('AtbashCipher', () => {
       expect(cipherText).toEqual('nrmwy oldrm tob')
     })
 
-    xit('encode numbers', () => {
+    it('encode numbers', () => {
       const cipherText = encode('Testing,1 2 3, testing.')
       expect(cipherText).toEqual('gvhgr mt123 gvhgr mt')
     })
