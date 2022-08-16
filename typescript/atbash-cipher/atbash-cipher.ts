@@ -1,32 +1,36 @@
 import { kStringMaxLength } from "buffer"
 
-// create a string of numbers 0-9 to append to our alphabet
-// and cypher to handle numbers, and create alphabet and cypher
-let numStringArray: Array<string> = [...Array(10).keys()].map((num) => String(num))
+// create our array of alphabet values and cypher values. We
+// then append an array of numbers 0-9 to handle inputs
+// containing numbers
+let alphabet: Array<string> = Array.from(Array(26)).map((e, i) => i + 65).map((x) => String.fromCharCode(x).toLowerCase())
+  .concat([...Array(10).keys()].map((num) => String(num)))
 
-let alphabet: Array<string> = Array.from(Array(26)).map((e, i) => i + 65).map((x) => String.fromCharCode(x).toLowerCase()).concat(numStringArray)
+let cypher: Array<string> = Array.from(Array(26)).map((e, i) => i + 65).map((x) => String.fromCharCode(x).toLowerCase()).reverse()
+  .concat([...Array(10).keys()].map((num) => String(num)))
 
-let cypher: Array<string> = Array.from(Array(26)).map((e, i) => i + 65).map((x) => String.fromCharCode(x).toLowerCase()).reverse().concat(numStringArray)
-
-
+// take our input string, remove everything except characters
+// and numbers, return its matching value in the cypher,
+// and add a space at the appropriate place in the output
+// string. trimEnd() to handle cases where regex adds
+// a space at the end
 export function encode(plainText: string): string {
-  console.log('plainText is: ' + plainText)
   let cleanedText: string = Array.from(plainText.toLowerCase())
     .map((element) => {
       if (element.match(/^[a-z0-9]+$/i)) {
         return cypher[alphabet.indexOf(element)]
       }
     })
-    .join('')
-  // .map((letter) => {
-  //   if (letter.match(/[a-z]/i))
-  //     return letter
-  // })
-  console.log('cleaned Text: ' + cleanedText)
-
-  return cleanedText
+    .join('').replace(/(.{5})/g, "$1 ")
+  return cleanedText.trimEnd()
 }
 
-export function decode(cipherText: unknown): unknown {
-  throw new Error('Remove this statement and implement this function')
+export function decode(cipherText: string): string {
+  let decoded: string = Array.from(cipherText)
+    .map((element) => {
+      if (element.match(/^[a-z0-9]+$/i)) {
+        return alphabet[cypher.indexOf(element)]
+      }
+    }).join('')
+  return decoded
 }

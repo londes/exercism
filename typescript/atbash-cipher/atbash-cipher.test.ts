@@ -22,7 +22,7 @@ describe('AtbashCipher', () => {
       expect(cipherText).toEqual('lnt')
     })
 
-    xit('encode mindblowingly', () => {
+    it('encode mindblowingly', () => {
       const cipherText = encode('mindblowingly')
       expect(cipherText).toEqual('nrmwy oldrm tob')
     })
@@ -32,34 +32,34 @@ describe('AtbashCipher', () => {
       expect(cipherText).toEqual('gvhgr mt123 gvhgr mt')
     })
 
-    xit('encode deep thought', () => {
+    it('encode deep thought', () => {
       const cipherText = encode('Truth is fiction.')
       expect(cipherText).toEqual('gifgs rhurx grlm')
     })
 
-    xit('encode all the letters', () => {
+    it('encode all the letters', () => {
       const cipherText = encode('thequickbrownfoxjumpsoverthelazydog')
       expect(cipherText).toEqual('gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt')
     })
   })
 
-  xdescribe('decode', () => {
-    xit('decode exercism', () => {
+  describe('decode', () => {
+    it('decode exercism', () => {
       const plainText = decode('vcvix rhn')
       expect(plainText).toEqual('exercism')
     })
 
-    xit('decode a sentence', () => {
+    it('decode a sentence', () => {
       const cipherText = decode('zmlyh gzxov rhlug vmzhg vkkrm thglm v')
       expect(cipherText).toEqual('anobstacleisoftenasteppingstone')
     })
 
-    xit('decode numbers', () => {
+    it('decode numbers', () => {
       const plainText = decode('gvhgr mt123 gvhgr mt')
       expect(plainText).toEqual('testing123testing')
     })
 
-    xit('decode all the letters', () => {
+    it('decode all the letters', () => {
       const cipherText = decode('gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt')
       expect(cipherText).toEqual('thequickbrownfoxjumpsoverthelazydog')
     })
