@@ -15,14 +15,14 @@ let cypher: Array<string> = Array.from(Array(26)).map((e, i) => i + 65).map((x) 
 // string. trimEnd() to handle cases where regex adds
 // a space at the end
 export function encode(plainText: string): string {
-  let cleanedText: string = Array.from(plainText.toLowerCase())
+  let encoded: string = Array.from(plainText.toLowerCase())
     .map((element) => {
       if (element.match(/^[a-z0-9]+$/i)) {
         return cypher[alphabet.indexOf(element)]
       }
     })
     .join('').replace(/(.{5})/g, "$1 ")
-  return cleanedText.trimEnd()
+  return encoded.trimEnd()
 }
 
 // pretty much just the reverse of above
