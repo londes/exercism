@@ -1,7 +1,9 @@
-export function transform(input: { [key: string]: string }): { [key: string]: number } {
+export function transform(input: { [key: string]: string[] }): { [key: string]: number } {
   let output: { [key: string]: number } = {}
   Object.entries(input).forEach(pair => {
-    console.log(pair)
+    pair[1].forEach(value => {
+      output[value.toLowerCase()] = Number(pair[0])
+    })
   })
-  return {}
+  return output
 }
