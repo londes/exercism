@@ -1,3 +1,7 @@
-export function transform(/* Parameters go here */) {
-  throw new Error('Remove this statement and implement this function')
+export function transform(input: { [key: string]: string }): { [key: string]: number } {
+  let output: { [key: string]: number } = {}
+  Object.entries(input).forEach(pair => {
+    console.log(pair)
+  })
+  return {}
 }
