@@ -1,10 +1,10 @@
 export class Robot {
   _name: string;
-  usedNames: Array<string>;
+  usedNames: Set<string>;
 
   constructor() {
     this._name = this.generateName();
-    this.usedNames = [];
+    this.usedNames = new Set();
   }
 
   public get name(): string {
@@ -13,18 +13,22 @@ export class Robot {
 
   public resetName(): void {
     this._name = this.generateName();
+    // terrible code below
+    // while (!this.usedNames.has(testName)) {
+    //   console.log(testName)
+    //   this.usedNames.add(testName)
+    //   this._name = testName
+    // }
   }
 
   public static releaseNames(): void {
-    // actually not sure what this is supposed to do?
   }
 
   private generateName(): string {
     let characters: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    let usedNames: Array<string> = [];
 
     let newName = '' + characters.charAt(Math.floor(Math.random() * 26)) + '' + characters.charAt(Math.floor(Math.random() * 26)) + '' + Math.floor(Math.random() * 10) + '' + Math.floor(Math.random() * 10) + '' + Math.floor(Math.random() * 10)
 
-    return newName;
+    return newName
   }
 }
