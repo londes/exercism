@@ -15,7 +15,7 @@ describe('Addition', () => {
     assertRational(actual, 7, 6)
   })
 
-  xit('Add a positive rational number and a negative rational number', () => {
+  it('Add a positive rational number and a negative rational number', () => {
     const actual = new Rational(1, 2).add(new Rational(-2, 3))
     assertRational(actual, -1, 6)
   })

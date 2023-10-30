@@ -1,37 +1,44 @@
 export class Rational {
-  constructor() {
-    throw new Error('Remove this statement and implement this function')
+  numerator: number;
+  denominator: number;
+
+  constructor(numerator: number, denominator: number) {
+    this.numerator = numerator;
+    this.denominator = denominator;
   }
 
-  add() {
-    throw new Error('Remove this statement and implement this function')
+  add = (newRational: Rational) =>{
+    this.numerator = (this.numerator * newRational.denominator + this.denominator * newRational.numerator)
+    this.denominator = this.denominator * newRational.denominator
+    return this
   }
 
-  sub() {
-    throw new Error('Remove this statement and implement this function')
+
+  sub(newRational: Rational) {
+    return this
   }
 
-  mul() {
-    throw new Error('Remove this statement and implement this function')
+  mul(newRational: Rational) {
+    return this
   }
 
-  div() {
-    throw new Error('Remove this statement and implement this function')
+  div(newRational: Rational) {
+    return this
   }
 
   abs() {
-    throw new Error('Remove this statement and implement this function')
+    return this
   }
 
-  exprational() {
-    throw new Error('Remove this statement and implement this function')
+  exprational(exponent: number) {
+    return this
   }
 
-  expreal() {
-    throw new Error('Remove this statement and implement this function')
+  expreal(exponent: number) {
+    return this
   }
 
   reduce() {
-    throw new Error('Remove this statement and implement this function')
+    return this
   }
 }
