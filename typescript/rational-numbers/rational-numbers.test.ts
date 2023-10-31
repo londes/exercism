@@ -20,61 +20,61 @@ describe('Addition', () => {
     assertRational(actual, -1, 6)
   })
 
-  xit('Add two negative rational numbers', () => {
+  it('Add two negative rational numbers', () => {
     const actual = new Rational(-1, 2).add(new Rational(-2, 3))
     assertRational(actual, -7, 6)
   })
 
-  xit('Add a rational number to its additive inverse', () => {
+  it('Add a rational number to its additive inverse', () => {
     const actual = new Rational(1, 2).add(new Rational(-1, 2))
     assertRational(actual, 0, 1)
   })
 })
 
 describe('Subtraction', () => {
-  xit('Subtract two positive rational numbers', () => {
+  it('Subtract two positive rational numbers', () => {
     const actual = new Rational(1, 2).sub(new Rational(2, 3))
     assertRational(actual, -1, 6)
   })
 
-  xit('Subtract a positive rational number and a negative rational number', () => {
+  it('Subtract a positive rational number and a negative rational number', () => {
     const actual = new Rational(1, 2).sub(new Rational(-2, 3))
     assertRational(actual, 7, 6)
   })
 
-  xit('Subtract two negative rational numbers', () => {
+  it('Subtract two negative rational numbers', () => {
     const actual = new Rational(-1, 2).sub(new Rational(-2, 3))
     assertRational(actual, 1, 6)
   })
 
-  xit('Subtract a rational number from itself', () => {
+  it('Subtract a rational number from itself', () => {
     const actual = new Rational(1, 2).sub(new Rational(1, 2))
     assertRational(actual, 0, 1)
   })
 })
 
 describe('Multiplication', () => {
-  xit('Multiply two positive rational numbers', () => {
+  it('Multiply two positive rational numbers', () => {
     const actual = new Rational(1, 2).mul(new Rational(2, 3))
     assertRational(actual, 1, 3)
   })
 
-  xit('Multiply a negative rational number by a positive rational number', () => {
+  it('Multiply a negative rational number by a positive rational number', () => {
     const actual = new Rational(-1, 2).mul(new Rational(2, 3))
     assertRational(actual, -1, 3)
   })
 
-  xit('Multiply two negative rational numbers', () => {
+  it('Multiply two negative rational numbers', () => {
     const actual = new Rational(-1, 2).mul(new Rational(-2, 3))
     assertRational(actual, 1, 3)
   })
 
-  xit('Multiply a rational number by its reciprocal', () => {
+  it('Multiply a rational number by its reciprocal', () => {
     const actual = new Rational(1, 2).mul(new Rational(2, 1))
     assertRational(actual, 1, 1)
   })
 
-  xit('Multiply a rational number by 1', () => {
+  it('Multiply a rational number by 1', () => {
     const actual = new Rational(1, 2).mul(new Rational(1, 1))
     assertRational(actual, 1, 2)
   })
